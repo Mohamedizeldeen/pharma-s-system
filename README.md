@@ -1,61 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 💊 Medicine Finder & Pharmacy Inventory System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive full-stack web and mobile solution designed to connect customers with nearby pharmacies while enabling pharmacy admins to efficiently manage medicine inventory in real time.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🧠 Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Objective:**  
+Empower pharmacy owners with a robust web dashboard to manage their inventory and provide customers with a seamless mobile app experience to search, locate, and request medicines effortlessly.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Key Components:
+- **Admin Web App:** A centralized platform to manage pharmacies, branches, medicines, and inventory.
+- **Customer Mobile App:** A user-friendly app for searching medicines, locating nearby branches, and placing orders or reservations.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🚀 Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 👨‍💼 Admin Web App
+- Manage pharmacies and their branches
+- Add, edit, and organize medicines with stock details
+- Upload medicine images and descriptions
+- Monitor orders and generate inventory reports
+- Secure role-based authentication for admins
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📱 Customer Mobile App
+- Search medicines by name, brand, or barcode
+- Check stock availability at nearby pharmacy branches
+- View pharmacy locations on an interactive map
+- Place orders or reserve medicines for pickup
+- Receive real-time notifications for availability and order updates
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🏗️ Tech Stack
 
-### Premium Partners
+| Layer              | Technology                     |
+|--------------------|---------------------------------|
+| **Backend / API**  | Laravel 11 (PHP 8.3)          |
+| **Database**       | MySQL / MariaDB               |
+| **Admin Dashboard**| Laravel Breeze, Blade |
+| **Authentication** | Laravel Sanctum              |
+| **Maps & Location**| Google Maps API              |
+| **File Storage**   | AWS S3 / DigitalOcean Spaces |
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🗄️ Database Schema (Summary)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- `users` → Admins and customers  
+- `pharmacies` → Represents pharmacy brands or chains  
+- `pharmacy_branches` → Individual branches with unique locations  
+- `medicines` → Global medicine catalog  
+- `pharmacy_inventories` → Stock details for each branch  
+- `orders` → Customer orders  
+- `order_items` → Medicines included in an order  
+- `prescriptions` → Optional uploaded prescriptions  
+- `notifications` → User notifications  
+- `audit_logs` → Tracks admin changes to inventory  
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## ⚙️ Installation & Setup
 
-## Security Vulnerabilities
+### Prerequisites
+Ensure you have the following installed:
+- **PHP 8.3** or higher
+- **Composer** (Dependency Manager for PHP)
+- **Node.js** and **npm** (for frontend dependencies)
+- **MySQL** or **MariaDB** (Database)
+- **Flutter** or **React Native CLI** (for mobile app development)
+- **Git** (Version Control)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2️⃣ Install Dependencies
+Navigate to the project directory and install backend dependencies:
+```bash
+composer install
+```
 
-## License
+Install frontend dependencies:
+```bash
+npm install
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 3️⃣ Configure Environment
+Copy the `.env.example` file to `.env` and update the environment variables:
+```bash
+cp .env.example .env
+```
+Set up database credentials, mail configuration, and other environment-specific settings.
+
+### 4️⃣ Generate Application Key
+Run the following command to generate the application key:
+```bash
+php artisan key:generate
+```
+
+### 5️⃣ Run Migrations and Seed Database
+Set up the database schema and seed initial data:
+```bash
+php artisan migrate --seed
+```
+
+### 6️⃣ Start Development Servers
+Start the backend server:
+```bash
+php artisan serve
+```
+
+For the admin dashboard, compile assets:
+```bash
+npm run dev
+```
+
+
+
+### 7️⃣ Access the Application
+- **Admin Dashboard:** Visit `http://localhost:8000` in your browser.
+
+---
+Follow these steps to set up the project locally. For production deployment, refer to the deployment guide in the documentation.
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-username/medicine-finder.git
+cd medicine-finder
+```
+
