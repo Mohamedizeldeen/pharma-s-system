@@ -50,8 +50,7 @@ class BranchController extends Controller
             'message' => 'Branch deleted successfully'
         ]);
     }
-
-  
+    
     public function getByPharma($pharmaId)
     {
         $branches = branch::where('pharma_id', $pharmaId)->with('pharma')->get();

@@ -10,23 +10,18 @@ use Illuminate\Support\Facades\Storage;
 
 class MedicineController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         $medicines = medicines::with('branch', 'pharma')->paginate(15);
         return response()->json($medicines);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+   
     public function store(StoreMedicineRequest $request)
     {
         $data = $request->validated();
 
-        // Handle image upload
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('medicines', 'public');
         }
@@ -38,24 +33,19 @@ class MedicineController extends Controller
         ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
+  
     public function show(medicines $medicine)
     {
         return response()->json($medicine->load('branch', 'pharma'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(UpdateMedicineRequest $request, medicines $medicine)
     {
         $data = $request->validated();
 
-        // Handle image upload
         if ($request->hasFile('image')) {
-            // Delete old image
+
             if ($medicine->image) {
                 Storage::disk('public')->delete($medicine->image);
             }
@@ -69,12 +59,9 @@ class MedicineController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(medicines $medicine)
     {
-        // Delete image if exists
         if ($medicine->image) {
             Storage::disk('public')->delete($medicine->image);
         }
@@ -85,9 +72,7 @@ class MedicineController extends Controller
         ]);
     }
 
-    /**
-     * Get medicines by branch
-     */
+  
     public function getByBranch($branchId)
     {
         $medicines = medicines::where('branch_id', $branchId)
@@ -96,9 +81,7 @@ class MedicineController extends Controller
         return response()->json($medicines);
     }
 
-    /**
-     * Search medicines
-     */
+    
     public function search(Request $request)
     {
         $query = medicines::query();
