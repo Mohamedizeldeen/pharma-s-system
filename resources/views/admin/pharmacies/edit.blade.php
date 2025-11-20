@@ -27,10 +27,10 @@
 
     <div class="bg-white rounded-lg shadow p-6">
         <h1 class="text-2xl font-bold text-gray-900 mb-6">
-            <i class="fas fa-hospital mr-2"></i>Edit Pharmacy: {{ $pharmacy->name }}
+            <i class="fas fa-hospital mr-2"></i>Edit Pharmacy: {{ $pharma->name }}
         </h1>
 
-        <form action="{{ route('admin.pharmacies.update', $pharmacy) }}" method="POST">
+        <form action="{{ route('admin.pharmacies.update', $pharma) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -42,7 +42,7 @@
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         Pharmacy Name <span class="text-red-500">*</span>
                     </label>
-                    <input type="text" name="name" value="{{ old('name', $pharmacy->name) }}" 
+                    <input type="text" name="name" value="{{ old('name', $pharma->name) }}" 
                            class="w-full border rounded-lg px-4 py-2 @error('name') border-red-500 @enderror" 
                            required>
                     @error('name')
@@ -56,7 +56,7 @@
                     </label>
                     <textarea name="main_address" rows="2" 
                               class="w-full border rounded-lg px-4 py-2 @error('main_address') border-red-500 @enderror" 
-                              required>{{ old('main_address', $pharmacy->main_address) }}</textarea>
+                              required>{{ old('main_address', $pharma->main_address) }}</textarea>
                     @error('main_address')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
@@ -67,7 +67,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Email <span class="text-red-500">*</span>
                         </label>
-                        <input type="email" name="email" value="{{ old('email', $pharmacy->email) }}" 
+                        <input type="email" name="email" value="{{ old('email', $pharma->email) }}" 
                                class="w-full border rounded-lg px-4 py-2 @error('email') border-red-500 @enderror" 
                                required>
                         @error('email')
@@ -79,7 +79,7 @@
                         <label class="block text-sm font-medium text-gray-700 mb-2">
                             Phone <span class="text-red-500">*</span>
                         </label>
-                        <input type="text" name="phone" value="{{ old('phone', $pharmacy->phone) }}" 
+                        <input type="text" name="phone" value="{{ old('phone', $pharma->phone) }}" 
                                class="w-full border rounded-lg px-4 py-2 @error('phone') border-red-500 @enderror" 
                                required>
                         @error('phone')
@@ -96,7 +96,7 @@
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                     <p class="text-sm text-blue-800">
                         <i class="fas fa-info-circle mr-2"></i>
-                        Current Owner: <strong>{{ $pharmacy->user->name }}</strong> ({{ $pharmacy->user->email }})
+                        Current Owner: <strong>{{ $pharma->user->name }}</strong> ({{ $pharma->user->email }})
                     </p>
                 </div>
 

@@ -101,6 +101,11 @@ class PharmaController extends Controller
             'total_revenue' => order::whereIn('branch_id', $pharma->branches->pluck('id'))
                 ->where('status', 'completed')
                 ->sum('total_price'),
+            'recent_orders' => order::whereIn('branch_id', $pharma->branches->pluck('id'))
+                ->with('branch', 'user')
+                ->orderBy('created_at', 'desc')
+                ->take(5)
+                ->get(),
         ];
 
         return view('admin.pharmacies.show', compact('pharma', 'stats'));

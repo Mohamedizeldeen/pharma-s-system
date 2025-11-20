@@ -30,12 +30,12 @@
         <div class="flex justify-between items-start">
             <div>
                 <h1 class="text-3xl font-bold text-gray-900 mb-2">
-                    <i class="fas fa-hospital mr-2"></i>{{ $pharmacy->name }}
+                    <i class="fas fa-hospital mr-2"></i>{{ $pharma->name }}
                 </h1>
-                <p class="text-gray-600">{{ $pharmacy->main_address }}</p>
+                <p class="text-gray-600">{{ $pharma->main_address }}</p>
             </div>
             <div class="flex gap-2">
-                <a href="{{ route('admin.pharmacies.edit', $pharmacy) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+                <a href="{{ route('admin.pharmacies.edit', $pharma) }}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     <i class="fas fa-edit mr-2"></i>Edit
                 </a>
             </div>
@@ -102,16 +102,16 @@
             <div class="space-y-3">
                 <div>
                     <p class="text-sm text-gray-500">Email</p>
-                    <p class="font-medium text-gray-900">{{ $pharmacy->email }}</p>
+                    <p class="font-medium text-gray-900">{{ $pharma->email }}</p>
                 </div>
                 <div>
                     <p class="text-sm text-gray-500">Phone</p>
-                    <p class="font-medium text-gray-900">{{ $pharmacy->phone }}</p>
+                    <p class="font-medium text-gray-900">{{ $pharma->phone }}</p>
                 </div>
                 <div>
                     <p class="text-sm text-gray-500">Owner</p>
-                    <p class="font-medium text-gray-900">{{ $pharmacy->user->name }}</p>
-                    <p class="text-sm text-gray-600">{{ $pharmacy->user->email }}</p>
+                    <p class="font-medium text-gray-900">{{ $pharma->user->name }}</p>
+                    <p class="text-sm text-gray-600">{{ $pharma->user->email }}</p>
                 </div>
             </div>
         </div>
@@ -148,13 +148,13 @@
     <div class="bg-white rounded-lg shadow">
         <div class="px-6 py-4 border-b">
             <h2 class="text-lg font-bold text-gray-900">
-                <i class="fas fa-store mr-2"></i>Branches ({{ $pharmacy->branches->count() }})
+                <i class="fas fa-store mr-2"></i>Branches ({{ $pharma->branches->count() }})
             </h2>
         </div>
         <div class="p-6">
-            @if($pharmacy->branches->count() > 0)
+            @if($pharma->branches->count() > 0)
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    @foreach($pharmacy->branches as $branch)
+                    @foreach($pharma->branches as $branch)
                     <div class="border rounded-lg p-4 hover:shadow-md transition">
                         <h3 class="font-bold text-lg mb-2">{{ $branch->branch_name }}</h3>
                         <p class="text-sm text-gray-600 mb-2">
